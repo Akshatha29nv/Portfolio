@@ -36,7 +36,7 @@
   --status-danger: 6 78% 57%;
 }
 
-/* Light theme overrides - not needed for this project but keeping for reference */
+/* Light theme overrides */
 .light {
   --background: 0 0% 100%;
   --foreground: 20 14.3% 4.1%;
@@ -57,6 +57,17 @@
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
   --ring: 20 14.3% 4.1%;
+  
+  /* Custom Colors - Light Theme Versions */
+  --primary-dark: 0 0% 95%;
+  --primary-darker: 0 0% 90%;
+  --primary-navy: 210 50% 95%;
+  --accent-blue: 228 83% 60%;
+  --accent-light-blue: 217 100% 62%;
+  --tech-green: 145 63% 49%;
+  --status-success: 145 63% 49%;
+  --status-warning: 36 100% 51%;
+  --status-danger: 6 78% 57%;
 }
 
 @layer base {

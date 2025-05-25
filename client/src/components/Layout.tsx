@@ -23,13 +23,23 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    // Always use dark theme for this project
+    // Check if there's a saved theme preference
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+
     const html = document.documentElement;
     if (theme === "dark") {
       html.classList.add("dark");
     } else {
       html.classList.remove("dark");
     }
+  }, [theme]);
+
+  // Save theme preference when it changes
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (

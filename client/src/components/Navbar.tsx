@@ -4,12 +4,14 @@ import { useScroll } from "@/hooks/use-scroll";
 import { useSectionVisibility } from "@/hooks/use-section-visibility";
 import { NAV_LINKS, SECTION_IDS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/Layout";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const scrolled = useScroll(100);
   const activeSection = useSectionVisibility(Object.values(SECTION_IDS));
+  const { theme, setTheme } = useTheme();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -56,6 +58,21 @@ export function Navbar() {
             >
               Contact
             </a>
+            
+            {/* Theme Toggle */}
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="text-gray-300 hover:text-white focus:outline-none"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </Button>
           </div>
           
           {/* Mobile menu button */}
@@ -94,6 +111,26 @@ export function Navbar() {
             >
               Contact
             </a>
+            
+            {/* Mobile Theme Toggle */}
+            <div className="flex items-center py-2">
+              <span className="text-gray-300 mr-2">Toggle Theme</span>
+              <Button 
+                variant="ghost" 
+                size="icon"
+                onClick={() => {
+                  setTheme(theme === "light" ? "dark" : "light");
+                  closeMobileMenu();
+                }}
+                className="text-gray-300 hover:text-white focus:outline-none"
+              >
+                {theme === 'dark' ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
